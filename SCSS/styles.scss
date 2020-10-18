@@ -1,0 +1,359 @@
+@import "variables";
+@import "mixins";
+
+
+//reset
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+header {
+    margin: 0;
+    padding: 0;
+}
+
+
+// base 
+body {
+    margin: 0;
+    padding: 0;
+    font-size: $fontSize;
+    font-family: $fontFamily;
+    height: 100vh;
+
+}
+
+
+
+.dark {
+    color: $witeText;
+    background: $veryDarkBlueBG;
+}
+
+.light {
+    color: $vryDarkBlueText;
+    background: $witeBG;
+
+    .bg-pattern {
+        background: $vryPaleBlueTopBGPattern;
+
+    }
+
+    .social p,
+    h2,
+    .card-top p,
+    .card-bottom p {
+        color: $vryDarkBlueText;
+    }
+
+    .card,
+    .detailed-card {
+
+        background: $lightGrayishBlueCardBG;
+
+
+        &:hover {
+            background: #e1e4f0;
+            cursor: pointer;
+        }
+
+    }
+
+    #toggler {
+        background: $lightTheme;
+
+    }
+
+    input[type='checkbox']:before {
+
+        background: $drkGrayishBlueText;
+    }
+
+    .card-deck-one .card:nth-child(1) .date p,
+    .card-deck-one .card:nth-child(2) .date p {
+        color: #1EB589;
+    }
+
+}
+
+.container {
+    margin: 0 auto;
+    height: 100%;
+    width: 90%;
+    z-index: 99;
+
+    @include mQ(768px) {
+        width: 80%;
+    }
+}
+
+.bg-pattern {
+    width: 100%;
+    height: 230px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -5px;
+    border-bottom-left-radius: 12.5px;
+    border-bottom-right-radius: 12.5px;
+    z-index: -1;
+    background: $veryDarkBlueTopBGPattern;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+
+    @include mQ(768px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .title {
+        border-bottom: 1px solid $dsaturatedBlueText;
+
+        @include mQ(768px) {
+            border: none;
+        }
+
+    }
+
+    .title p:first-child {
+        font-size: 1.7em;
+        margin-bottom: 4px;
+        font-weight: 700;
+    }
+
+    .title p:last-child {
+        font-size: 1.05em;
+        margin-bottom: 18px;
+        color: $dsaturatedBlueText;
+        font-weight: 400;
+    }
+
+    .switch {
+        padding: 15px 0;
+        color: $dsaturatedBlueText;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            @include mQ(768px) {
+                margin-right: 10px;
+            }
+        }
+
+    }
+}
+
+input[type='checkbox'] {
+    margin: 0;
+    width: 45px;
+    height: 20px;
+    position: relative;
+    -webkit-appearance: none;
+    background: $toggle;
+    outline: none;
+    border-radius: 15px;
+    transition: all 0.5s;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+input:checked[type='checkbox'] {
+    background: $toggle;
+    transition: all 0.5s;
+}
+
+input[type='checkbox']:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: $veryDarkBlueTopBGPattern;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transform: scale(0.75);
+    transition: all 0.5s;
+}
+
+input:checked[type='checkbox']:before {
+    left: 20px;
+
+}
+
+.card-deck-one,
+.card-deck-two {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 15px;
+    grid-column-gap: 0;
+    padding: 30px 0;
+
+    @include mQ(768px) {
+        grid-row-gap: 20px;
+        grid-column-gap: 25px;
+    }
+
+}
+
+.card-deck-two {
+    @include mQ(768px) {
+        margin-bottom: 40px;
+    }
+}
+
+.card,
+.detailed-card {
+    grid-column: 1/5;
+    text-align: center;
+    padding: 20px 0;
+    background: $drkDesaturatedBlueCardBG;
+    border-radius: 4.5px;
+
+    &:hover {
+        background-color: hsl(229, 20%, 28%);
+        cursor: pointer;
+    }
+
+    @include mQ(768px) {
+        grid-column: span 1;
+    }
+}
+
+.card {
+    .social {
+        display: flex;
+        justify-content: center;
+
+        p {
+            font-size: 0.8em;
+            color: $dsaturatedBlueText;
+            align-self: center;
+
+
+        }
+
+        img {
+            margin-right: 6px;
+        }
+    }
+
+
+
+    h2 {
+        font-size: 3.25em;
+        margin-top: 15px;
+    }
+
+    .followers {
+        font-size: 0.85em;
+        letter-spacing: 5px;
+        color: $dsaturatedBlueText;
+    }
+
+    .date {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+
+        p {
+            font-size: 0.8em;
+
+        }
+
+        img {
+            margin-right: 6px;
+            height: 6px;
+            align-self: center;
+        }
+    }
+
+}
+
+#facebook {
+    border-top: 4px solid $facebook;
+}
+
+#twitter {
+    border-top: 4px solid $twitter;
+}
+
+#insta {
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: $instagram;
+
+
+    .date p {
+        color: #1EB589;
+    }
+}
+
+#youtube {
+    border-top: 4px solid $youTube;
+
+    .date {
+        p {
+            color: $brightRed;
+        }
+    }
+}
+
+.card-top,
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+
+}
+
+.card-top {
+    margin-bottom: 30px;
+
+    p {
+        color: $dsaturatedBlueText;
+    }
+}
+
+.card-bottom {
+    margin-top: 30px;
+
+    p:first-child {
+        font-size: 1.75em;
+        font-weight: 700;
+    }
+
+    .percentage {
+        display: flex;
+
+        p {
+            align-self: center;
+            color: #1EB589;
+            font-size: 0.8em;
+        }
+
+
+        img {
+            height: 6px;
+            margin-right: 4px;
+            align-self: center;
+        }
+    }
+}
+
+.card-deck-two .detailed-card:nth-child(2) .card-bottom .percentage p {
+    color: $brightRed;
+}
+
+.card-deck-two .detailed-card:nth-child(7) .card-bottom .percentage p,
+.card-deck-two .detailed-card:nth-child(8) .card-bottom .percentage p {
+    color: $brightRed;
+}
